@@ -37,7 +37,7 @@ error_handler() {
         echo "[!] Failed command: $failed_command"
         echo
         echo "[!] It is recommended to report this issue here:"
-        echo "    htps://github.com/pwnerblu/surrealra1n/issues"
+        echo "    https://github.com/pwnerblu/surrealra1n/issues"
         echo "Here's the recommended way to report this:"
         echo "Title should be a brief and clear summary of the issue you are trying to report"
         echo "Issue description should mention all relevant details to such issue if possible, and also a full terminal log attached."
@@ -338,7 +338,7 @@ require_dir() {
 
 # echo "Checking for updates..."
 # rm -rf update/latest.txt
-# curl -L -o update/latest.txt htps://github.com/pwnerblu/surrealra1n/raw/refs/heads/development/update/latest.txt
+# curl -L -o update/latest.txt https://github.com/pwnerblu/surrealra1n/raw/refs/heads/development/update/latest.txt
 # LATEST_VERSION=$(head -n 1 "update/latest.txt" | tr -d '\r\n')
 # RELEASE_NOTES=$(awk '/^RELEASE NOTES:/{flag=1; next} flag' "update/latest.txt")
 
@@ -353,7 +353,7 @@ require_dir() {
 #         rm -rf "updatefiles"
 #         mkdir updatefiles
 #         rm -rf "updatefiles/repo"
-#         git clone --branch development htps://github.com/pwnerblu/surrealra1n updatefiles/repo --recursive
+#         git clone --branch development https://github.com/pwnerblu/surrealra1n updatefiles/repo --recursive
 #         if [[ ! -d updatefiles/repo ]]; then
 #             echo "Failed to clone repository."
 #             exit 1
@@ -425,96 +425,96 @@ if [[ -f "./bin/img4" && \
     echo "所需文件齐全."
 elif [[ $dist == 3 ]]; then
     echo "bin文件不齐全"
-    echo "即将从github镜像站下载"
+    echo "即将从Github下载"
 
     mkdir -p bin futurerestore
 
-    curl -L -o bin/img4 htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4
-    curl -L -o bin/img4tool htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4tool
-    curl -L -o bin/pzb htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/pzb
-    curl -L -o bin/KPlooshFinder htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/KPlooshFinder
-    curl -L -o bin/dsc64patcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dsc64patcher
-    curl -L -o bin/kerneldiff htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kerneldiff
-    curl -L -o bin/dtree_patcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dtree_patcher
-    curl -L -o bin/irecovery htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/irecovery
-    curl -L -o bin/iBoot64Patcher htps://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/iBoot64Patcher
-    curl -L -o bin/Kernel64Patcher2 htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/Kernel64Patcher
-    curl -L -o bin/hfsplus htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/hfsplus
-    curl -L -o bin/zenity htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/zenity
+    curl -L -o bin/img4 https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4
+    curl -L -o bin/img4tool https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4tool
+    curl -L -o bin/pzb https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/pzb
+    curl -L -o bin/KPlooshFinder https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/KPlooshFinder
+    curl -L -o bin/dsc64patcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dsc64patcher
+    curl -L -o bin/kerneldiff https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kerneldiff
+    curl -L -o bin/dtree_patcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dtree_patcher
+    curl -L -o bin/irecovery https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/irecovery
+    curl -L -o bin/iBoot64Patcher https://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/iBoot64Patcher
+    curl -L -o bin/Kernel64Patcher2 https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/Kernel64Patcher
+    curl -L -o bin/hfsplus https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/hfsplus
+    curl -L -o bin/zenity https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/zenity
     # iboot patcher oops
-    curl -L -o ibootpatch.c htps://gist.githubusercontent.com/pwnerblu/c759c0060b5167a411b3b3adfcd07572/raw/fd2e870d832ea59c31a54377370ad469f70e6499/patch.c
+    curl -L -o ibootpatch.c https://gist.githubusercontent.com/pwnerblu/c759c0060b5167a411b3b3adfcd07572/raw/fd2e870d832ea59c31a54377370ad469f70e6499/patch.c
     gcc ibootpatch.c -o bin/iBootPatch
     rm -rf ibootpatch.c
     # from spironolactone oops
-    curl -L -o bin/trustcache htps://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
+    curl -L -o bin/trustcache https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
     # sshpass
-    curl -L -o bin/sshpass htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
-    curl -L -o bin/iproxy htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
-    curl -L -o bin/dmg htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dmg
-    curl -L -o bin/ipatcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iPatcher
+    curl -L -o bin/sshpass https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
+    curl -L -o bin/iproxy https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
+    curl -L -o bin/dmg https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dmg
+    curl -L -o bin/ipatcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iPatcher
     # install additional restored_external patcher (iPhone X only)
-    curl -L -o bin/ipx_restored_patcher htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/arm64/ipx_restored_patcher
+    curl -L -o bin/ipx_restored_patcher https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/arm64/ipx_restored_patcher
     # restored patcher for seprmvr64 A8+ restores, my fork of mineek's restored patcher but repurposed
-    curl -L -o main.c htps://gist.githubusercontent.com/pwnerblu/d2adc5adee74a679704577ddd64508bf/raw/991a74e2bbbdebdb1dd2d49d82f0829e7553f02f/main.c
+    curl -L -o main.c https://gist.githubusercontent.com/pwnerblu/d2adc5adee74a679704577ddd64508bf/raw/991a74e2bbbdebdb1dd2d49d82f0829e7553f02f/main.c
     gcc main.c -o bin/restoredpatcher
     rm -rf main.c
     # install asr patcher for tethered restores
-    git clone htps://github.com/iSuns9/asr64_patcher --recursive
+    git clone https://github.com/iSuns9/asr64_patcher --recursive
     cd asr64_patcher
     make
     mv asr64_patcher ../bin/asr64_patcher
     cd ..
     rm -rf "asr64_patcher"
     # install restored_external patcher for tethered restores to iOS 14+
-    git clone htps://github.com/iSuns9/restored_external64patcher --recursive
+    git clone https://github.com/iSuns9/restored_external64patcher --recursive
     cd restored_external64patcher
     make
     mv restored_external64_patcher ../bin/restored_external64_patcher
     cd ..
     rm -rf "restored_external64patcher"
     # install libimg4 patcher for tethered restores to iOS 14/15, primarily convert to localboot
-    git clone htps://github.com/iSuns9/libimg4_patcher --recursive
+    git clone https://github.com/iSuns9/libimg4_patcher --recursive
     cd libimg4_patcher
     make
     mv libimg4_patcher ../bin/libimg4_patcher
     cd ..
     rm -rf "libimg4_patcher"
     # the favor goes to openra1n by Mineek (pongoOS on unsigned bootchains), uses Nick Chan fork of openra1n
-    git clone htps://github.com/asdfugil/openra1n -b ipad6
+    git clone https://github.com/asdfugil/openra1n -b ipad6
     cd openra1n
-    curl -L -o Makefile htps://github.com/mineek/openra1n/raw/refs/heads/sigcheck/Makefile
+    curl -L -o Makefile https://github.com/mineek/openra1n/raw/refs/heads/sigcheck/Makefile
     make || true
     mv openra1n ../bin/openra1n || true
     cd ..
     rm -rf "openra1n"
     # palera1n macOS bin
-    curl -L -o bin/palera1n htps://github.com/palera1n/palera1n/releases/download/v2.2.1/palera1n-macos-universal
+    curl -L -o bin/palera1n https://github.com/palera1n/palera1n/releases/download/v2.2.1/palera1n-macos-universal
     # install Kernel64Patcher for tether booting iOS 13+
-    curl -L -o bin/Kernel64Patcher htps://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/Kernel64Patcher
+    curl -L -o bin/Kernel64Patcher https://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/Kernel64Patcher
     # fetch pwnerblu fork of Kernel64Patcher and iBootpatch2 for tether booting iOS 14.x on A12 device.
-    git clone htps://github.com/pwnerblu/Kernel64Patcher --recursive
+    git clone https://github.com/pwnerblu/Kernel64Patcher --recursive
     cd Kernel64Patcher
     make
     cp Kernel64Patcher ../bin/Kernel64Patcher3
     cd ..
     rm -rf "Kernel64Patcher"
-    git clone htps://github.com/pwnerblu/iBootpatch2 -b ipad6
+    git clone https://github.com/pwnerblu/iBootpatch2 -b ipad6
     cd iBootpatch2
     make
     cp iBootpatch2 ../bin/iBootpatch2
     cd ..
     rm -rf "iBootpatch2"
     # done!
-    curl -L -o bin/gaster htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/gaster
-    curl -L -o bin/tsschecker htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/tsschecker
-    curl -L -o bin/ldid htps://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_arm64
-    curl -L -o bin/kairos htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kairos
+    curl -L -o bin/gaster https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/gaster
+    curl -L -o bin/tsschecker https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/tsschecker
+    curl -L -o bin/ldid https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_arm64
+    curl -L -o bin/kairos https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kairos
     # download activate.sh and backup.sh from hiylx's eclipsera1n, for backing up and restoring iOS 16+ activation files on 14.0-15.7(.2)
-    curl -L -o activate.sh htps://github.com/hiylx/eclipsera1n/raw/refs/heads/main/activate.sh
-    curl -L -o backup.sh htps://github.com/hiylx/eclipsera1n/raw/refs/heads/main/backup.sh
-    curl -L -o futurerestore/futurerestore.zip htps://github.com/LukeeGD/futurerestore/releases/download/latest/futurerestore-macOS-RELEASE-main.zip
+    curl -L -o activate.sh https://github.com/hiylx/eclipsera1n/raw/refs/heads/main/activate.sh
+    curl -L -o backup.sh https://github.com/hiylx/eclipsera1n/raw/refs/heads/main/backup.sh
+    curl -L -o futurerestore/futurerestore.zip https://github.com/LukeeGD/futurerestore/releases/download/latest/futurerestore-macOS-RELEASE-main.zip
     # fetch idevicerestore for 7.0-9.3.5 restores 
-    curl -L -o bin/idevicerestore htps://github.com/NyanSatan/SundanceInH2A/raw/refs/heads/master/executables/Darwin/idevicerestore
+    curl -L -o bin/idevicerestore https://github.com/NyanSatan/SundanceInH2A/raw/refs/heads/master/executables/Darwin/idevicerestore
     # libs
     chmod +x bin/*
     chmod +x *.sh
@@ -537,92 +537,92 @@ elif [[ $dist == 4 ]]; then
 
     mkdir -p bin futurerestore
 
-    curl -L -o bin/img4 htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4
-    curl -L -o bin/img4tool htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4tool
-    curl -L -o bin/pzb htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/pzb
-    curl -L -o bin/KPlooshFinder htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/KPlooshFinder
-    curl -L -o bin/dsc64patcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dsc64patcher
-    curl -L -o bin/kerneldiff htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kerneldiff
-    curl -L -o bin/dtree_patcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dtree_patcher
-    curl -L -o bin/irecovery htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/irecovery
-    curl -L -o bin/iBoot64Patcher htps://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/iBoot64Patcher
-    curl -L -o bin/Kernel64Patcher2 htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/Kernel64Patcher
-    curl -L -o bin/hfsplus htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/hfsplus
-    curl -L -o bin/zenity htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/zenity
+    curl -L -o bin/img4 https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4
+    curl -L -o bin/img4tool https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/img4tool
+    curl -L -o bin/pzb https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/pzb
+    curl -L -o bin/KPlooshFinder https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/KPlooshFinder
+    curl -L -o bin/dsc64patcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dsc64patcher
+    curl -L -o bin/kerneldiff https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kerneldiff
+    curl -L -o bin/dtree_patcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dtree_patcher
+    curl -L -o bin/irecovery https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/irecovery
+    curl -L -o bin/iBoot64Patcher https://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/iBoot64Patcher
+    curl -L -o bin/Kernel64Patcher2 https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/Kernel64Patcher
+    curl -L -o bin/hfsplus https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/hfsplus
+    curl -L -o bin/zenity https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/zenity
     # iboot patcher oops
-    curl -L -o ibootpatch.c htps://gist.githubusercontent.com/pwnerblu/c759c0060b5167a411b3b3adfcd07572/raw/fd2e870d832ea59c31a54377370ad469f70e6499/patch.c
+    curl -L -o ibootpatch.c https://gist.githubusercontent.com/pwnerblu/c759c0060b5167a411b3b3adfcd07572/raw/fd2e870d832ea59c31a54377370ad469f70e6499/patch.c
     gcc ibootpatch.c -o bin/iBootPatch
     rm -rf ibootpatch.c
     # from spironolactone oops
-    curl -L -o bin/trustcache htps://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
+    curl -L -o bin/trustcache https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
     # sshpass
-    curl -L -o bin/sshpass htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
-    curl -L -o bin/iproxy htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
-    curl -L -o bin/dmg htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dmg
-    curl -L -o bin/ipatcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iPatcher
+    curl -L -o bin/sshpass https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
+    curl -L -o bin/iproxy https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
+    curl -L -o bin/dmg https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/dmg
+    curl -L -o bin/ipatcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iPatcher
     # install additional restored_external patcher (iPhone X only)
-    curl -L -o bin/ipx_restored_patcher htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/ipx_restored_patcher
+    curl -L -o bin/ipx_restored_patcher https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/ipx_restored_patcher
     # palera1n macOS bin
-    curl -L -o bin/palera1n htps://github.com/palera1n/palera1n/releases/download/v2.2.1/palera1n-macos-universal
+    curl -L -o bin/palera1n https://github.com/palera1n/palera1n/releases/download/v2.2.1/palera1n-macos-universal
     # the favor goes to openra1n by Mineek (pongoOS on unsigned bootchains), uses Nick Chan fork of openra1n
-    git clone htps://github.com/asdfugil/openra1n -b ipad6
+    git clone https://github.com/asdfugil/openra1n -b ipad6
     cd openra1n
-    curl -L -o Makefile htps://github.com/mineek/openra1n/raw/refs/heads/sigcheck/Makefile
+    curl -L -o Makefile https://github.com/mineek/openra1n/raw/refs/heads/sigcheck/Makefile
     make OBJCOPY=$(brew --prefix)/opt/binutils/bin/gobjcopy || true
     mv openra1n ../bin/openra1n || true
     cd ..
     rm -rf "openra1n" 
     # restored patcher for seprmvr64 A8+ restores, my fork of mineek's restored patcher but repurposed
-    curl -L -o main.c htps://gist.githubusercontent.com/pwnerblu/d2adc5adee74a679704577ddd64508bf/raw/991a74e2bbbdebdb1dd2d49d82f0829e7553f02f/main.c
+    curl -L -o main.c https://gist.githubusercontent.com/pwnerblu/d2adc5adee74a679704577ddd64508bf/raw/991a74e2bbbdebdb1dd2d49d82f0829e7553f02f/main.c
     gcc main.c -o bin/restoredpatcher
     rm -rf main.c
     # install asr patcher for tethered restores
-    git clone htps://github.com/iSuns9/asr64_patcher --recursive
+    git clone https://github.com/iSuns9/asr64_patcher --recursive
     cd asr64_patcher
     make
     mv asr64_patcher ../bin/asr64_patcher
     cd ..
     rm -rf "asr64_patcher"
     # install restored_external patcher for tethered restores to iOS 14+
-    git clone htps://github.com/iSuns9/restored_external64patcher --recursive
+    git clone https://github.com/iSuns9/restored_external64patcher --recursive
     cd restored_external64patcher
     make
     mv restored_external64_patcher ../bin/restored_external64_patcher
     cd ..
     rm -rf "restored_external64patcher"
     # install libimg4 patcher for tethered restores to iOS 14/15, primarily convert to localboot
-    git clone htps://github.com/iSuns9/libimg4_patcher --recursive
+    git clone https://github.com/iSuns9/libimg4_patcher --recursive
     cd libimg4_patcher
     make
     mv libimg4_patcher ../bin/libimg4_patcher
     cd ..
     rm -rf "libimg4_patcher"
     # install Kernel64Patcher for tether booting iOS 13+
-    curl -L -o bin/Kernel64Patcher htps://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/Kernel64Patcher
+    curl -L -o bin/Kernel64Patcher https://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/Kernel64Patcher
     # fetch pwnerblu fork of Kernel64Patcher and iBootpatch2 for tether booting iOS 14.x on A12 device.
-    git clone htps://github.com/pwnerblu/Kernel64Patcher --recursive
+    git clone https://github.com/pwnerblu/Kernel64Patcher --recursive
     cd Kernel64Patcher
     make
     cp Kernel64Patcher ../bin/Kernel64Patcher3
     cd ..
     rm -rf "Kernel64Patcher"
-    git clone htps://github.com/pwnerblu/iBootpatch2 -b ipad6
+    git clone https://github.com/pwnerblu/iBootpatch2 -b ipad6
     cd iBootpatch2
     make
     cp iBootpatch2 ../bin/iBootpatch2
     cd ..
     rm -rf "iBootpatch2"
     # done!
-    curl -L -o bin/gaster htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/gaster
-    curl -L -o bin/tsschecker htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/tsschecker
-    curl -L -o bin/ldid htps://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
-    curl -L -o bin/kairos htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kairos
+    curl -L -o bin/gaster https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/gaster
+    curl -L -o bin/tsschecker https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/tsschecker
+    curl -L -o bin/ldid https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
+    curl -L -o bin/kairos https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/kairos
     # download activate.sh and backup.sh from hiylx's eclipsera1n, for backing up and restoring iOS 16+ activation files on 14.0-15.7(.2)
-    curl -L -o activate.sh htps://github.com/hiylx/eclipsera1n/raw/refs/heads/main/activate.sh
-    curl -L -o backup.sh htps://github.com/hiylx/eclipsera1n/raw/refs/heads/main/backup.sh
-    curl -L -o futurerestore/futurerestore.zip htps://github.com/LukeeGD/futurerestore/releases/download/latest/futurerestore-macOS-RELEASE-main.zip
+    curl -L -o activate.sh https://github.com/hiylx/eclipsera1n/raw/refs/heads/main/activate.sh
+    curl -L -o backup.sh https://github.com/hiylx/eclipsera1n/raw/refs/heads/main/backup.sh
+    curl -L -o futurerestore/futurerestore.zip https://github.com/LukeeGD/futurerestore/releases/download/latest/futurerestore-macOS-RELEASE-main.zip
     # fetch idevicerestore for 7.0-9.3.5 restores 
-    curl -L -o bin/idevicerestore htps://github.com/NyanSatan/SundanceInH2A/raw/refs/heads/master/executables/Darwin/idevicerestore
+    curl -L -o bin/idevicerestore https://github.com/NyanSatan/SundanceInH2A/raw/refs/heads/master/executables/Darwin/idevicerestore
     # libs
     chmod +x bin/*
     chmod +x *.sh
@@ -645,67 +645,67 @@ else
 
     mkdir -p bin futurerestore
 
-    curl -L -o bin/img4 htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/img4
-    curl -L -o bin/img4tool htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/img4tool
-    curl -L -o bin/KPlooshFinder htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/KPlooshFinder
-    curl -L -o bin/pzb htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/pzb
-    curl -L -o bin/dsc64patcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/dsc64patcher
-    curl -L -o bin/kerneldiff htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/kerneldiff
-    curl -L -o bin/dtree_patcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/dtree_patcher
-    curl -L -o bin/irecovery htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/irecovery
-    curl -L -o bin/iBoot64Patcher htps://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Linux/iBoot64Patcher
-    curl -L -o bin/Kernel64Patcher2 htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/Kernel64Patcher
-    curl -L -o bin/hfsplus htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/hfsplus
+    curl -L -o bin/img4 https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/img4
+    curl -L -o bin/img4tool https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/img4tool
+    curl -L -o bin/KPlooshFinder https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/KPlooshFinder
+    curl -L -o bin/pzb https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/pzb
+    curl -L -o bin/dsc64patcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/dsc64patcher
+    curl -L -o bin/kerneldiff https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/kerneldiff
+    curl -L -o bin/dtree_patcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/dtree_patcher
+    curl -L -o bin/irecovery https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/irecovery
+    curl -L -o bin/iBoot64Patcher https://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Linux/iBoot64Patcher
+    curl -L -o bin/Kernel64Patcher2 https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/Kernel64Patcher
+    curl -L -o bin/hfsplus https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/hfsplus
     # sshpass
-    curl -L -o bin/sshpass htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/sshpass
-    curl -L -o bin/iproxy htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/iproxy
-    curl -L -o bin/zenity htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/zenity
-    curl -L -o bin/dmg htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/dmg
-    curl -L -o bin/ipatcher htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/ipatcher
+    curl -L -o bin/sshpass https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/sshpass
+    curl -L -o bin/iproxy https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/iproxy
+    curl -L -o bin/zenity https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/zenity
+    curl -L -o bin/dmg https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/dmg
+    curl -L -o bin/ipatcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/ipatcher
     # install additional restored_external patcher (iPhone X only)
-    curl -L -o bin/ipx_restored_patcher htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/ipx_restored_patcher
+    curl -L -o bin/ipx_restored_patcher https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/ipx_restored_patcher
     # restored patcher for seprmvr64 A8+ restores, my fork of mineek's restored patcher but repurposed
-    curl -L -o main.c htps://gist.githubusercontent.com/pwnerblu/d2adc5adee74a679704577ddd64508bf/raw/991a74e2bbbdebdb1dd2d49d82f0829e7553f02f/main.c
+    curl -L -o main.c https://gist.githubusercontent.com/pwnerblu/d2adc5adee74a679704577ddd64508bf/raw/991a74e2bbbdebdb1dd2d49d82f0829e7553f02f/main.c
     gcc main.c -o bin/restoredpatcher
     rm -rf main.c
     # install asr patcher for tethered restores
-    git clone htps://github.com/iSuns9/asr64_patcher --recursive
+    git clone https://github.com/iSuns9/asr64_patcher --recursive
     cd asr64_patcher
     make
     mv asr64_patcher ../bin/asr64_patcher
     cd ..
     rm -rf "asr64_patcher"
     # install restored_external patcher for tethered restores to iOS 14+
-    git clone htps://github.com/iSuns9/restored_external64patcher --recursive
+    git clone https://github.com/iSuns9/restored_external64patcher --recursive
     cd restored_external64patcher
     make
     mv restored_external64_patcher ../bin/restored_external64_patcher
     cd ..
     rm -rf "restored_external64patcher"
     # install libimg4 patcher for tethered restores to iOS 14/15, primarily convert to localboot
-    git clone htps://github.com/iSuns9/libimg4_patcher --recursive
+    git clone https://github.com/iSuns9/libimg4_patcher --recursive
     cd libimg4_patcher
     make
     mv libimg4_patcher ../bin/libimg4_patcher
     cd ..
     rm -rf "libimg4_patcher"
     # install Kernel64Patcher for tether booting iOS 13+
-    curl -L -o bin/Kernel64Patcher htps://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Linux/Kernel64Patcher
-    curl -L -o bin/gaster htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/gaster
-    curl -L -o bin/tsschecker htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/tsschecker
-    curl -L -o bin/ldid htps://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_linux_x86_64
-    curl -L -o bin/kairos htps://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/kairos
+    curl -L -o bin/Kernel64Patcher https://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Linux/Kernel64Patcher
+    curl -L -o bin/gaster https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/gaster
+    curl -L -o bin/tsschecker https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/tsschecker
+    curl -L -o bin/ldid https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_linux_x86_64
+    curl -L -o bin/kairos https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Linux/kairos
     # download activate.sh and backup.sh from hiylx's eclipsera1n, for backing up and restoring iOS 16+ activation files on 14.0-15.7(.2)
-    curl -L -o activate.sh htps://github.com/hiylx/eclipsera1n/raw/refs/heads/main/activate.sh
-    curl -L -o backup.sh htps://github.com/hiylx/eclipsera1n/raw/refs/heads/main/backup.sh
-    curl -L -o futurerestore/futurerestore.zip htps://github.com/LukeeGD/futurerestore/releases/download/latest/futurerestore-Linux-x86_64-RELEASE-main.zip
+    curl -L -o activate.sh https://github.com/hiylx/eclipsera1n/raw/refs/heads/main/activate.sh
+    curl -L -o backup.sh https://github.com/hiylx/eclipsera1n/raw/refs/heads/main/backup.sh
+    curl -L -o futurerestore/futurerestore.zip https://github.com/LukeeGD/futurerestore/releases/download/latest/futurerestore-Linux-x86_64-RELEASE-main.zip
     # fetch idevicerestore for 7.0-9.3.5 restores 
-    curl -L -o bin/idevicerestore htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/idevicerestore2
+    curl -L -o bin/idevicerestore https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/idevicerestore2
     # libs
     rm -rf "lib"
     mkdir lib
-    curl -L -o lib/libcrypto.so.35 htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/lib/libcrypto.so.35
-    curl -L -o lib/libssl.so.35 htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/lib/libssl.so.35
+    curl -L -o lib/libcrypto.so.35 https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/lib/libcrypto.so.35
+    curl -L -o lib/libssl.so.35 https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/linux/x86_64/lib/libssl.so.35
     chmod +x bin/*
     chmod +x *.sh
 
@@ -1056,7 +1056,7 @@ if [[ $misc_utils_options == 1 ]]; then
     read -p "你确定要重新安装 surrealra1n 吗? (y/N): " surrealra1n_reinstall
     if [[ $surrealra1n_reinstall == Y || $surrealra1n_reinstall == y ]]; then
         sudo rm -rf ./*
-        git clone --branch development htps://github.com/pwnerblu/surrealra1n repo --recursive
+        git clone --branch development https://github.com/pwnerblu/surrealra1n repo --recursive
         if [[ ! -d repo ]]; then
             echo "Failed to clone repository. You will need to fetch surrealra1n from releases on GitHub"
             exit 1
@@ -1206,7 +1206,7 @@ fi
 switch_to_main(){
 
 echo "Fetching latest stable version info..."
-curl -L -o update/latest_main.txt htps://github.com/pwnerblu/surrealra1n/raw/refs/heads/main/update/latest.txt
+curl -L -o update/latest_main.txt https://github.com/pwnerblu/surrealra1n/raw/refs/heads/main/update/latest.txt
 MAIN_VERSION=$(head -n 1 "update/latest_main.txt" | tr -d '\r\n')
 
 CURRENT_CLEAN=$(echo "$CURRENT_VERSION" | sed 's/ beta//g' | sed 's/ .*//g' | tr -d 'v')
@@ -1244,7 +1244,7 @@ if [[ "$CURRENT_MAJOR" -gt "$MAIN_MAJOR" ]] || \
     read -p "Are you sure you want to switch to stable? (y/N): " switch_confirm
     if [[ $switch_confirm == Y || $switch_confirm == y ]]; then
         sudo rm -rf ./*
-        git clone --branch main htps://github.com/pwnerblu/surrealra1n repo --recursive
+        git clone --branch main https://github.com/pwnerblu/surrealra1n repo --recursive
         if [[ ! -d repo ]]; then
             echo "Failed to clone repository."
             exit 1
@@ -1274,7 +1274,7 @@ else
         mv -v futurerestore surrealra1n.old/
         mv -v keys surrealra1n.old/
         mv -v surrealra1n.sh surrealra1n.old/
-        git clone --branch main htps://github.com/pwnerblu/surrealra1n repo --recursive
+        git clone --branch main https://github.com/pwnerblu/surrealra1n repo --recursive
         if [[ ! -d repo ]]; then
             echo "Failed to clone repository."
             exit 1
@@ -1395,7 +1395,7 @@ mkdir -p tmp
 sep_path="tmp/sep-firmware.j42d.RELEASE.im4p"
 manifest_path="tmp/BuildManifest-SEP.plist"
 sep_ipsw="https://secure-appldnld.apple.com/tvos10.2.2/091-23452-20170720-5D53229C-6A56-11E7-8577-8B2C4A4DD6D5/AppleTV5,3_10.2.2_14W756_Restore.ipsw"
-curl -L -o tmp/BuildManifest-SEP.plist htps://github.com/pwnerblu/cursed-sep-resources/raw/refs/heads/main/BuildManifest-$IDENTIFIER.plist
+curl -L -o tmp/BuildManifest-SEP.plist https://github.com/pwnerblu/cursed-sep-resources/raw/refs/heads/main/BuildManifest-$IDENTIFIER.plist
 sudo ./bin/pzb -g Firmware/all_flash/sep-firmware.j42d.RELEASE.im4p $sep_ipsw
 sudo mv -v sep-firmware.j42d.RELEASE.im4p $sep_path
 
@@ -1407,7 +1407,7 @@ mkdir -p tmp
 sep_path="tmp/sep-firmware.n61.RELEASE.im4p"
 manifest_path="tmp/BuildManifest-SEP.plist"
 sep_ipsw="https://updates.cdn-apple.com/2026WinterFCS/fullrestores/047-28352/B80B4A86-C206-4C4F-8D35-65579694AEE9/iPhone_4.7_12.5.8_16H88_Restore.ipsw"
-curl -L -o tmp/BuildManifest-SEP.plist htps://github.com/pwnerblu/cursed-sep-resources/raw/refs/heads/main/BuildManifest-$IDENTIFIER-12.5.8.plist
+curl -L -o tmp/BuildManifest-SEP.plist https://github.com/pwnerblu/cursed-sep-resources/raw/refs/heads/main/BuildManifest-$IDENTIFIER-12.5.8.plist
 sudo ./bin/pzb -g Firmware/all_flash/sep-firmware.n61.RELEASE.im4p $sep_ipsw
 sudo mv -v sep-firmware.n61.RELEASE.im4p $sep_path
 
@@ -1424,7 +1424,7 @@ if [[ $IDENTIFIER == iPhone6* ]]; then
 elif [[ $IDENTIFIER == iPad4* ]]; then
     sep_ipsw="http://appldnld.apple.com/ios10.3.3/091-23378-20170719-CA983C78-6977-11E7-8922-3D9100BA0AE3/iPad_64bit_10.3.3_14G60_Restore.ipsw"
 fi
-curl -L -o tmp/BuildManifest-SEP.plist htps://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/resources/manifest/BuildManifest_${IDENTIFIER}_10.3.3.plist
+curl -L -o tmp/BuildManifest-SEP.plist https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/resources/manifest/BuildManifest_${IDENTIFIER}_10.3.3.plist
 sudo ./bin/pzb -g Firmware/all_flash/$sep_name $sep_ipsw
 sudo mv -v $sep_name $sep_path
 
@@ -1658,12 +1658,12 @@ restore_untethered_opts(){
 clear 
 echo "$INFO_TEXT"
 echo ""
-echo "Options:"
+echo "选项:"
 echo ""
-echo "1. Select Target IPSW"
-echo "2. Select SHSH"
-echo "3. Start Restore"
-echo "4. Back"
+echo "1. 选择要恢复的IPSW"
+echo "2. 选择SHSH"
+echo "3. 开始恢复"
+echo "4. 返回"
 read -p "请输入选项 (1-4): " untether_options
 if [[ $untether_options == 1 ]]; then
     IPSW_PATH=$($zenity --file-selection --title="Select an IPSW file")
@@ -2043,7 +2043,7 @@ sleep 5
 
 echo "Sending iBSS"
 if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPad11* ]]; then
-    #curl -L -o bin/liter8ctl htps://github.com/prdgmshift/usbliter8/raw/refs/heads/main/usbliter8ctl
+    #curl -L -o bin/liter8ctl https://github.com/prdgmshift/usbliter8/raw/refs/heads/main/usbliter8ctl
     python3 bin/liter8ctl boot $bootdir/iBSS.boot
     echo "Device should now boot"
     exit 0
@@ -2450,7 +2450,7 @@ else
         make_custom_ipsw_a12_ios14
     fi
 fi
-#curl -L -o bin/liter8ctl htps://github.com/prdgmshift/usbliter8/raw/refs/heads/main/usbliter8ctl
+#curl -L -o bin/liter8ctl https://github.com/prdgmshift/usbliter8/raw/refs/heads/main/usbliter8ctl
 python3 bin/liter8ctl boot boot/$IDENTIFIER/iBSS.patch
 sleep 6
 APNONCE=$(./bin/irecovery -q | grep "^NONC:" | cut -d ':' -f2 | xargs)
@@ -2914,7 +2914,7 @@ fi
 echo "$INFO_TEXT"
 echo "This OTA restore will use $LATEST_VERSION baseband"
 echo ""
-echo "Options:"
+echo "选项:"
 echo ""
 echo "1. Select 10.3.3 IPSW"
 echo "2. Start Restore"
