@@ -1,26 +1,32 @@
 # surrealra1n 
 
-A tethered downgrade tool for some A7/A8(X) devices, all A11 devices and one A12 device (experimental)
+A12-A13 设备不完美降级工具 + A7-A11 设备降级工具 汉化
 
-Supports macOS and Linux
+支持macOS（A12-A13、A7-A11）与Linux（A7-A11）
 
-For surrealra1n support, join the [surrealra1n](https://discord.gg/kDXVHhTQs2) Discord Server
+surrealra1n discord 官方频道, [surrealra1n](https://discord.gg/kDXVHhTQs2) （请勿在此频道内反应此非官方分支出现的问题）
 
-# Compatible devices and versions:
+[原项目地址](https://github.com/pwnerblu/surrealra1n)
 
-View the [Supported Devices](https://github.com/pwnerblu/surrealra1n/wiki/Supported-Devices) section in the wiki for more information
+iPhoneXR测试通过，可以降级iOS14、15
 
-# Usage:
+# 支持的设备和版本:
 
-Download surrealra1n [here](https://github.com/pwnerblu/surrealra1n/releases/latest) or clone it using git:
+[点击此处查看](https://github.com/pwnerblu/surrealra1n/wiki/Supported-Devices)
+
+# 使用教程:
+
+下载此项目 :
 ```
-git clone -b development https://github.com/pwnerblu/surrealra1n
+git clone -b development https://github.com/Remedgit/surrealra1n_zh && cd surrealra1n_zh
 ```
-Extract the zip file and open a terminal window to the folder that contains surrealra1n, then launch it using the command: ```./surrealra1n.sh```.
+运行 ```./surrealra1n.sh```
 
+# 提示
 
+A12 A13设备降级后会无法激活，除非你在之前备份过激活文件，否则无法进入系统！
 
-# Thanks to:
+# 致谢:
 
 libimobiledevice team, tihmstar, LukeeGD/LukeZGD, xerub, plooshi, etc! (for the tools it has to download)
 
@@ -28,14 +34,4 @@ Mineek - iPhone X restored patcher, used for ipx restores 14.3-15.6.1 (my fork o
 
 Nathan (verygenericname) - SSHRD_Script
 
-
-
-
-
-
-
-
-
-
-
-
+pwnerblu - surrealra1n
