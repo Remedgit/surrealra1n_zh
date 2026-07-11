@@ -10,6 +10,8 @@ surrealra1n discord 官方频道, [surrealra1n](https://discord.gg/kDXVHhTQs2) �
 
 iPhoneXR测试通过，可以降级iOS14、15
 
+部分界面汉化不完全（）请谅解
+
 # 支持的设备和版本:
 
 [点击此处查看](https://github.com/pwnerblu/surrealra1n/wiki/Supported-Devices)
@@ -21,6 +23,8 @@ iPhoneXR测试通过，可以降级iOS14、15
 git clone -b development https://github.com/Remedgit/surrealra1n_zh && cd surrealra1n_zh
 ```
 运行 ```./surrealra1n.sh```
+
+注：可以通过运行 ```./download_from_mirror.sh```从Github加速站下载依赖文件
 
 # 提示
 
