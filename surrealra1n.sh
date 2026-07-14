@@ -1,5 +1,5 @@
 #!/bin/bash
-CURRENT_VERSION="v2.0 beta 12 (translated by Remedgit)"
+CURRENT_VERSION="surrealra1n_zh v20260714"
 
 if [ "$EUID" -eq 0 ]; then
   echo "请不要以root身份运行本脚本"
@@ -447,6 +447,7 @@ elif [[ $dist == 3 ]]; then
     rm -rf ibootpatch.c
     # from spironolactone oops
     curl -L -o bin/trustcache https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
+    curl -L -o bin/iBoot64Patcher2 https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/iBoot64Patcher_cryptic
     # sshpass
     curl -L -o bin/sshpass https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
     curl -L -o bin/iproxy https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
@@ -555,6 +556,7 @@ elif [[ $dist == 4 ]]; then
     rm -rf ibootpatch.c
     # from spironolactone oops
     curl -L -o bin/trustcache https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
+    curl -L -o bin/iBoot64Patcher2 https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/iBoot64Patcher_cryptic
     # sshpass
     curl -L -o bin/sshpass https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
     curl -L -o bin/iproxy https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
@@ -1166,17 +1168,17 @@ fi
 dfu_helper(){
 
 if [[ $MODE == Normal || $MODE == Recovery ]]; then
-    echo "You need to put your device into DFU mode."
-    read -p "Would you like instructions on how to do this? (y/n): " dfu_instructions
+    echo "你需要将设备进入DFU模式"
+    read -p "你需要DFU向导吗 (y/n): " dfu_instructions
     if [[ $dfu_instructions == y || $dfu_instructions == Y ]]; then
-        echo "Instructions will begin in:"
+        echo "向导即将开始:"
         echo "3" && sleep 1 && echo "2" && sleep 1 && echo "1" && sleep 1
-        echo "Hold power + home buttons." 
+        echo "按住 电源键 + Home键" 
         echo "10" && sleep 1 && echo "9" && sleep 1 && echo "8" && sleep 1 && echo "7" && sleep 1 && echo "6" && sleep 1 && echo "5" && sleep 1 && echo "4" && sleep 1 && echo "3" && sleep 1 && echo "2" && sleep 1 && echo "1" && sleep 1
-        echo "Release the power button now, but keep holding home button."
+        echo "松开电源键，继续按住Home键"
         echo "5" && sleep 1 && echo "4" && sleep 1 && echo "3" && sleep 1 && echo "2" && sleep 1 && echo "1" && sleep 1
     else
-        echo "Put your device into DFU mode now"
+        echo "请将设备进入DFU"
     fi
 fi
 
@@ -1496,7 +1498,8 @@ fi
 
 det_rsep_flag(){
 
-if [[ $VERSION == 16.* || $IDENTIFIER == iPhone10,3 || $IDENTIFIER == iPhone10,6 ]]; then
+if [[ $VERSION == 16.* || $IDENTIFIER == iPhone10,3 || $IDENTIFIER == iPhone10,6 || $IDENTIFIER == iPhone12* ]]; then
+    # from https://github.com/pwnerblu/surrealra1n/commit/afdd767ff777ad95c5ac4a73cfe082e6a547cc81
     rsep_flag=""
 else
     rsep_flag="--no-rsep"
@@ -1891,8 +1894,10 @@ if [[ $VERSION == 14.0 ]] && [[ $BUILD != 18A373 ]]; then
     sudo ../bin/pzb -g Firmware/dfu/$IBSS $ipsw_url
     cd ..
     ./bin/img4 -i work/$IBSS -o work/iBSS.raw -k $IBSS_KEY
-    ./bin/kairos work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
-    ./bin/kairos work/iBSS.raw work/iBSS.patchboot -b "-v"
+#    ./bin/kairos work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
+#    ./bin/kairos work/iBSS.raw work/iBSS.patchboot -b "-v"
+    ./bin/iBoot64Patcher2 work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
+    ./bin/iBoot64Patcher2 work/iBSS.raw work/iBSS.patchboot -b "-v"
     ./bin/iBootpatch2 work/iBSS.patchboot boot/$IDENTIFIER/$VERSION/iBSS.boot
     ./bin/img4 -i boot/$IDENTIFIER/iBSS.patch -o tmp2/Firmware/dfu/$IBEC -A -T ibec
 elif [[ $VERSION == 14.5* || $VERSION == 14.6* || $VERSION == 14.7* || $VERSION == 14.8* ]]; then
@@ -1901,8 +1906,10 @@ elif [[ $VERSION == 14.5* || $VERSION == 14.6* || $VERSION == 14.7* || $VERSION 
     sudo ../bin/pzb -g Firmware/dfu/$IBSS $ipsw_url
     cd ..
     ./bin/img4 -i work/$IBSS -o work/iBSS.raw -k $IBSS_KEY
-    ./bin/kairos work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
-    ./bin/kairos work/iBSS.raw work/iBSS.patchboot -b "-v"
+#    ./bin/kairos work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
+#    ./bin/kairos work/iBSS.raw work/iBSS.patchboot -b "-v"
+    ./bin/iBoot64Patcher2 work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
+    ./bin/iBoot64Patcher2 work/iBSS.raw work/iBSS.patchboot -b "-v"
     ./bin/iBootpatch2 work/iBSS.patchboot boot/$IDENTIFIER/$VERSION/iBSS.boot
     ./bin/img4 -i boot/$IDENTIFIER/iBSS.patch -o tmp2/Firmware/dfu/$IBEC -A -T ibec
 elif [[ $VERSION == 15.* ]]; then
@@ -1913,14 +1920,30 @@ elif [[ $VERSION == 15.* ]]; then
     ./bin/img4 -i boot/$IDENTIFIER/iBSS.patch -o tmp2/Firmware/dfu/$IBEC -A -T ibec
 else
     ./bin/img4 -i tmp1/Firmware/dfu/$IBSS -o work/iBSS.raw -k $IBSS_KEY
-    ./bin/kairos work/iBSS.raw boot/$IDENTIFIER/iBSS.patch
-    ./bin/kairos work/iBSS.raw work/iBSS.patchboot -b "-v"
+#    ./bin/kairos work/iBSS.raw boot/$IDENTIFIER/iBSS.patch
+#    ./bin/kairos work/iBSS.raw work/iBSS.patchboot -b "-v"
+    ./bin/iBoot64Patcher2 work/iBSS.raw boot/$IDENTIFIER/iBSS.patch
+    ./bin/iBoot64Patcher2 work/iBSS.raw work/iBSS.patchboot -b "-v"
     ./bin/iBootpatch2 work/iBSS.patchboot boot/$IDENTIFIER/$VERSION/iBSS.boot
     ./bin/img4 -i boot/$IDENTIFIER/iBSS.patch -o tmp2/Firmware/dfu/$IBEC -A -T ibec
 fi
 #
 restore_ramdisk_dmg=$(find_dmg tmp1 smallest)
 restore_ramdisk_dmg_18=$(find_dmg tmp2 largest 179000000)
+if [[ $IDENTIFIER == iPhone11* ]] && [[ $BUILD != 18A5342e ]]; then
+    # update rd stuff
+    # merged
+    restore_ramdisk_dmg=$(find_dmg tmp1 largest 1073741824)
+    restored="restored_update"
+else
+    restore_ramdisk_dmg=$(find_dmg tmp1 smallest)
+    restored="restored_external"
+fi
+if [[ $LATEST_VERSION == 18.* ]]; then
+    restore_ramdisk_dmg_18=$(find_dmg tmp2 largest 179000000)
+elif [[ $LATEST_VERSION == 26.* ]]; then
+    restore_ramdisk_dmg_18=$(find_dmg tmp2 largest 232784000)
+fi
 fs_dmg_18=$(find_dmg_arm64e tmp2 largest)
 fs_dmg=$(find_dmg tmp1 largest)
 fs_dmg_name=${fs_dmg##*/}
@@ -1974,23 +1997,37 @@ rm -rf tmp2/$KERNEL
 ./bin/hfsplus work/ramdisk.raw add work/libimg4.patch usr/lib/libimg4.dylib
 ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/lib/libimg4.dylib
 if [[ $VERSION == 15.* ]]; then
-    ramdisk_download_name="018-79907-001.dmg"
+    # ramdisk_download_name="018-79907-001.dmg"
+    if [[ $restored == "restored_update" ]]; then
+        ramdisk_download_name="018-80166-001.dmg"
+    else
+        ramdisk_download_name="018-79907-001.dmg"
+    fi
     ramdisk_url="https://updates.cdn-apple.com/2021FallFCS/fullrestores/002-02910/AF984499-D03A-43E7-9472-6D16BA756E5E/iPhone10,3,iPhone10,6_15.0_19A346_Restore.ipsw"
 else
-    ramdisk_download_name="048-58904-639.dmg"
+    # ramdisk_download_name="048-58904-639.dmg"
+    if [[ $restored == "restored_update" ]]; then
+        ramdisk_download_name="048-58813-634.dmg"
+    else
+        ramdisk_download_name="048-58904-639.dmg"
+    fi
     ramdisk_url="https://updates.cdn-apple.com/2020SummerFCS/fullrestores/001-46617/B62CA88B-EB85-4A5A-9440-7E0B90B02006/iPhone10,3,iPhone10,6_14.0_18A373_Restore.ipsw"
 fi
 if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPhone12* ]]; then
     sudo ./bin/pzb -g $ramdisk_download_name $ramdisk_url
     ./bin/img4 -i $ramdisk_download_name -o work/ramdisk2.raw
     sudo rm -rf $ramdisk_download_name
-    ./bin/hfsplus work/ramdisk2.raw extract usr/local/bin/restored_external work/restored_external
+    #./bin/hfsplus work/ramdisk2.raw extract usr/local/bin/restored_external work/restored_external
+    ./bin/hfsplus work/ramdisk2.raw extract usr/local/bin/$restored work/restored_external
     ./bin/ipx_restored_patcher work/restored_external work/restored_patch
     ./bin/ldid -e work/restored_external > work/ents.plist
     ./bin/ldid -Swork/ents.plist work/restored_patch
-    ./bin/hfsplus work/ramdisk.raw rm usr/local/bin/restored_external
-    ./bin/hfsplus work/ramdisk.raw add work/restored_patch usr/local/bin/restored_external
-    ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/local/bin/restored_external
+    # ./bin/hfsplus work/ramdisk.raw rm usr/local/bin/restored_external
+    # ./bin/hfsplus work/ramdisk.raw add work/restored_patch usr/local/bin/restored_external
+    # ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/local/bin/restored_external
+    ./bin/hfsplus work/ramdisk.raw rm usr/local/bin/$restored
+    ./bin/hfsplus work/ramdisk.raw add work/restored_patch usr/local/bin/$restored
+    ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/local/bin/$restored
 fi
 if [[ $VERSION == 15.* ]]; then
     ./bin/img4 -i tmp1/Firmware/$ramdisk_dmg_name.trustcache -o work/trustcache.raw
@@ -2481,9 +2518,9 @@ while true; do
 done
 if [[ $EXIT_CODE -eq 0 ]]; then
     echo "恢复完毕"
-    if [[ $VERSION == 14.* ]]; then
-        echo "设备将处于假DFU"
-    fi
+    # if [[ $VERSION == 14.* ]]; then
+    #     echo "设备将处于假DFU"
+    # fi
     exit 0
 else
     echo "futurerestore 失败 exit code $EXIT_CODE"
