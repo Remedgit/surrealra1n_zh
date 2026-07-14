@@ -26,9 +26,21 @@ git clone -b development https://github.com/Remedgit/surrealra1n_zh && cd surrea
 
 注：可以通过运行 ```./download_from_mirror.sh```从Github加速站下载依赖文件
 
-# 提示
+# A12设备降级教程
 
-A12 A13设备降级后会无法激活，除非你在之前备份过激活文件，否则无法进入系统！
+目前仅支持XR
+
+## 1.准备工作
+
+下载本项目、[iOS 14.0 beta4(18A5342E)](https://updates.cdn-apple.com/2020SummerSeed/fullrestores/001-32635/423F68EA-D37F-11EA-BB8E-D1AE39EBB63D/iPhone11,8,iPhone12,1_14.0_18A5342e_Restore.ipsw)固件、最新版本固件(目前最新版本为18.7.9)，以及你想要降级的版本固件
+
+## 2.降级14.0 b4以激活设备
+
+运行./surrealra1n.sh，根据工具内指示，选择最新固件和14.4 beta4固件，降级至iOS14.0 beta4并激活设备
+
+## 3.升级至你想要的版本
+
+运行./surrealra1n.sh，根据工具内指示，选择最新固件和你想要降级的固件，不出意外的话，开机后会提示您已升级到指定版本，即降级成功
 
 # 致谢:
 
