@@ -1,5 +1,5 @@
 #!/bin/bash
-CURRENT_VERSION="surrealra1n_zh v20260714"
+CURRENT_VERSION="surrealra1n_zh v20260716"
 
 if [ "$EUID" -eq 0 ]; then
   echo "请不要以root身份运行本脚本"
@@ -334,58 +334,6 @@ require_dir() {
     fi
 }
 
-#
-
-# echo "Checking for updates..."
-# rm -rf update/latest.txt
-# curl -L -o update/latest.txt https://github.com/pwnerblu/surrealra1n/raw/refs/heads/development/update/latest.txt
-# LATEST_VERSION=$(head -n 1 "update/latest.txt" | tr -d '\r\n')
-# RELEASE_NOTES=$(awk '/^RELEASE NOTES:/{flag=1; next} flag' "update/latest.txt")
-
-# if [[ $LATEST_VERSION != $CURRENT_VERSION ]]; then
-#     echo "A new version of surrealra1n is available: $LATEST_VERSION"
-#     echo "RELEASE NOTES:"
-#     echo "$RELEASE_NOTES"
-#     echo ""
-#     echo "It is strongly recommended to update to get the latest features + bug fixes."
-#     read -p "Would you like to update now? (y/n): " update
-#     if [[ $update == y || $update == Y ]]; then
-#         rm -rf "updatefiles"
-#         mkdir updatefiles
-#         rm -rf "updatefiles/repo"
-#         git clone --branch development https://github.com/pwnerblu/surrealra1n updatefiles/repo --recursive
-#         if [[ ! -d updatefiles/repo ]]; then
-#             echo "Failed to clone repository."
-#             exit 1
-#         fi
-#         rm -rf "surrealra1n.old"
-#         mkdir -p surrealra1n.old # make folder to back up old surrealra1n installation
-#         echo "$CURRENT_VERSION" > surrealra1n.old/oldversion.txt
-#         echo "Backing up your current surrealra1n installation..."
-#         mv -v bin surrealra1n.old/
-#         mv -v futurerestore surrealra1n.old/
-#         mv -v keys surrealra1n.old/
-#         mv -v surrealra1n.sh surrealra1n.old/
-#         rm -rf "bin"
-#         rm -rf "futurerestore"
-#         rm -rf "keys"
-#         echo "Copying new files..."
-#         cp -av updatefiles/repo/. ./
-#         chmod +x surrealra1n.sh
-
-#         rm -rf "updatefiles"
-#         echo "surrealra1n has been updated! Please run the script again"
-#         exit 0
-#     else
-#         echo "You have declined the update."
-#         echo "This version of surrealra1n is no longer supported, so it is recommended to update as soon as possible."
-#         outdated=1
-#         read -p "Press enter to continue"
-#     fi
-# else
-#     echo "surrealra1n is up to date."
-#     sleep 1
-# fi
 echo "更新检查已跳过"
 
 echo "检查所需工具"
@@ -860,6 +808,7 @@ elif [[ $IDENTIFIER == iPhone12,3 ]]; then
     LEAPHAPTIC="D421_LeapHapticsFirmware.im4p"
     WIRELESS="WirelessPower.iphone12.im4p"
     KERNEL2="kernelcache.release.iphone12x"
+    PMP="t8030pmp.im4p"
 elif [[ $IDENTIFIER == iPhone10,1 || $IDENTIFIER == iPhone10,4 || $IDENTIFIER == iPhone10,2 || $IDENTIFIER == iPhone10,5 ]]; then
     REFER="iphone10"
 elif [[ $IDENTIFIER == iPhone10,3 || $IDENTIFIER == iPhone10,6 ]]; then
@@ -1054,7 +1003,7 @@ else
     read -p "请输入选项 (1-3): " misc_utils_options
 fi
 if [[ $misc_utils_options == 1 ]]; then
-    echo "警告: 所有文件（引导文件等）都将被清除，随后安装全新的surrealra1n"
+    echo "警告: 所有文件(引导文件等)都将被清除，随后安装全新的surrealra1n"
     read -p "你确定要重新安装 surrealra1n 吗? (y/N): " surrealra1n_reinstall
     if [[ $surrealra1n_reinstall == Y || $surrealra1n_reinstall == y ]]; then
         sudo rm -rf ./*
@@ -1298,43 +1247,43 @@ fi
 dfu_helper_a11(){
 
 if [[ $MODE == Normal || $MODE == Recovery ]]; then
-    echo "You need to put your device into DFU mode."
-    read -p "Would you like instructions on how to do this? (y/n): " dfu_instructions
+    echo "你需要将设备进入DFU模式"
+    read -p "你需要DFU向导吗 (y/n): " dfu_instructions
     if [[ $dfu_instructions == y || $dfu_instructions == Y ]] && [[ $MODE == Recovery ]]; then
-        echo "Instructions will begin in:"
+        echo "向导即将开始:"
         echo "3" && sleep 1 && echo "2" && sleep 1 && echo "1" && sleep 1
-        echo "Hold volume down + power buttons." 
+        echo "按住 电源键 + 音量- 键" 
         echo "4" && sleep 1 && echo "3" && sleep 1 && ./bin/irecovery -n && echo "2" && sleep 1 && echo "1" && sleep 1
-        echo "Release the power button now, but keep holding volume down button."
+        echo "松开 电源键 ，继续按住 音量- 键"
         echo "8" && sleep 1 && echo "7" && sleep 1 && echo "6" && sleep 1 && echo "5" && sleep 1 && echo "4" && sleep 1 && echo "3" && sleep 1 && echo "2" && sleep 1 && echo "1" && sleep 1
     elif [[ $dfu_instructions == y || $dfu_instructions == Y ]] && [[ $MODE == Normal ]]; then
-        echo "Put your device into recovery mode, then continue"
-        read -p "Press enter to continue once Device is in Recovery"
-        echo "Instructions will begin in:"
+        echo "请先将你的设备进入恢复模式"
+        read -p "进入恢复模式后，按Enter键"
+        echo "向导即将开始:"
         echo "3" && sleep 1 && echo "2" && sleep 1 && echo "1" && sleep 1
-        echo "Hold volume down + power buttons." 
+        echo "按住 电源键 + 音量- 键" 
         echo "4" && sleep 1 && echo "3" && sleep 1 && ./bin/irecovery -n && echo "2" && sleep 1 && echo "1" && sleep 1
-        echo "Release the power button now, but keep holding volume down button."
+        echo "松开 电源键 ，继续按住 音量- 键"
         echo "8" && sleep 1 && echo "7" && sleep 1 && echo "6" && sleep 1 && echo "5" && sleep 1 && echo "4" && sleep 1 && echo "3" && sleep 1 && echo "2" && sleep 1 && echo "1" && sleep 1
     else
-        echo "Put your device into DFU mode now"
+        echo "请将设备进入DFU模式"
     fi
 fi
 
-echo "Checking for DFU devices"
+echo "寻找DFU模式设备"
 if [[ $dfu_instructions == Y || $dfu_instructions == y ]]; then
     MODE=$(./bin/irecovery -q | grep "^MODE:" | cut -d ':' -f2 | xargs) || true
     if [[ $MODE == DFU ]]; then
-        echo "The device has entered DFU successfully!"
+        echo "设备成功进入DFU模式"
     else
-        echo "Device has not entered DFU mode successfully"
+        echo "设备没有成功进入DFU模式"
         exit 1
     fi
 else
     while true; do
       MODE=$(./bin/irecovery -q 2>/dev/null | grep "^MODE:" | cut -d ':' -f2 | xargs) || true
       if [ "$MODE" = "DFU" ]; then
-        echo "Device is now in DFU mode!"
+        echo "设备处于DFU模式"
         break
       fi
 
@@ -1498,8 +1447,7 @@ fi
 
 det_rsep_flag(){
 
-if [[ $VERSION == 16.* || $IDENTIFIER == iPhone10,3 || $IDENTIFIER == iPhone10,6 || $IDENTIFIER == iPhone12* ]]; then
-    # from https://github.com/pwnerblu/surrealra1n/commit/afdd767ff777ad95c5ac4a73cfe082e6a547cc81
+if [[ $VERSION == 16.* || $IDENTIFIER == iPhone10,3 || $IDENTIFIER == iPhone10,6 || $IDENTIFIER == iPhone12* ]]; then    # from https://github.com/pwnerblu/surrealra1n/commit/afdd767ff777ad95c5ac4a73cfe082e6a547cc81
     rsep_flag=""
 else
     rsep_flag="--no-rsep"
@@ -1964,6 +1912,7 @@ cp -v tmp1/Firmware/all_flash/$DEVICETREE tmp2/Firmware/all_flash/$DEVICETREE
 cp -v tmp1/Firmware/$IOFW tmp2/Firmware/$IOFW
 if [[ $IDENTIFIER == iPhone12* ]]; then
     cp -v tmp1/Firmware/$LEAPHAPTIC tmp2/Firmware/$LEAPHAPTIC
+    cp -v tmp1/Firmware/pmp/$PMP tmp2/Firmware/pmp/$PMP
 fi
 cp -v $fs_dmg $fs_dmg_18 # replace rootfs in the IPSW
 cp -v tmp1/Firmware/$fs_dmg_name.trustcache tmp2/Firmware/$fs_dmg_18_name.trustcache 
@@ -2020,11 +1969,13 @@ if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPhone12* ]]; then
     #./bin/hfsplus work/ramdisk2.raw extract usr/local/bin/restored_external work/restored_external
     ./bin/hfsplus work/ramdisk2.raw extract usr/local/bin/$restored work/restored_external
     ./bin/ipx_restored_patcher work/restored_external work/restored_patch
+    if [[ $IDENTIFIER == iPhone12,3 ]]; then
+        # skip baseband update on 11 Pro as apparantely that causes issue with a restore
+        mv -v work/restored_patch work/restored_pat
+        ./bin/restoredpatcher work/restored_pat work/restored_patch -b
+    fi
     ./bin/ldid -e work/restored_external > work/ents.plist
     ./bin/ldid -Swork/ents.plist work/restored_patch
-    # ./bin/hfsplus work/ramdisk.raw rm usr/local/bin/restored_external
-    # ./bin/hfsplus work/ramdisk.raw add work/restored_patch usr/local/bin/restored_external
-    # ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/local/bin/restored_external
     ./bin/hfsplus work/ramdisk.raw rm usr/local/bin/$restored
     ./bin/hfsplus work/ramdisk.raw add work/restored_patch usr/local/bin/$restored
     ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/local/bin/$restored
@@ -2051,22 +2002,14 @@ rm -rf "work"
 just_boot(){
 
 if [[ ! -f boot/$ECID.txt ]]; then
-    read -p "Input the version you'd like to boot: " VERSION
+    read -p "请输入手机现在的版本: " VERSION
 else
     VERSION=$(cat boot/$ECID.txt) 
 fi
 bootdir="boot/$IDENTIFIER/$VERSION"
 if [[ ! -d $bootdir ]]; then
-    echo "Please do a tethered restore to iOS $VERSION, then try tether boot again."
+    echo "未找到 $VERSION 的启动文件，你需要先进行一次降级"
     exit 1
-fi
-if [[ $IDENTIFIER == iPhone11* ]] && [[ $VERSION == 14.* ]] && [[ $MODE == DFU ]]; then
-    irecovery_output=$(./bin/irecovery -q)
-    if echo "$irecovery_output" | grep -q "PWND"; then
-        echo "设备已处于pwndfu"
-    else
-        echo "设备可能处于假DFU模式或未pwn，请先进入dfu并使用RP2350 PWN"
-    fi
 fi
 
 if [[ $IDENTIFIER == iPhone10* || $IDENTIFIER == iPhone11* ]]; then
@@ -2078,34 +2021,34 @@ pwn_device
 
 sleep 5
 
-echo "Sending iBSS"
+echo "发送 iBSS"
 if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPad11* ]]; then
     #curl -L -o bin/liter8ctl https://github.com/prdgmshift/usbliter8/raw/refs/heads/main/usbliter8ctl
     python3 bin/liter8ctl boot $bootdir/iBSS.boot
-    echo "Device should now boot"
+    echo "已引导设备"
     exit 0
 fi
 ./bin/irecovery -f $bootdir/iBSS.img4
 if [[ $IDENTIFIER == iPhone10* ]]; then
-    echo "Device should now boot"
+    echo "已引导设备"
     exit 0
 fi
 sleep 5
-echo "Sending iBEC"
+echo "发送 iBEC"
 ./bin/irecovery -f $bootdir/iBEC.img4
 sleep 5
-echo "Sending DeviceTree"
+echo "发送 DeviceTree"
 ./bin/irecovery -f $bootdir/DeviceTree.img4
 ./bin/irecovery -c devicetree
 if [[ $VERSION == 12.* || $VERSION == 13.* || $VERSION == 14.* || $VERSION == 15.* ]]; then
-    echo "Sending trustcache"
+    echo "发送 trustcache"
     ./bin/irecovery -f $bootdir/Trustcache.img4
     ./bin/irecovery -c firmware
 fi
-echo "Sending Kernelcache"
+echo "发送 Kernelcache"
 ./bin/irecovery -f $bootdir/Kernelcache.img4
 ./bin/irecovery -c bootx
-echo "Device should now boot"
+echo "已引导设备"
 exit 0
 
 }
@@ -2448,9 +2391,13 @@ fi
 
 if [[ $VERSION == 14.* || $VERSION == 15.* ]]; then
     echo "SEP 支持不完全"
-    echo "设备降级后将无法激活"
-    echo "设备降级后侧载ipa文件将不可用（trollstore除外）"
-    echo "设备降级后将无法设置密码、使用FaceID"
+    echo "设备降级后将无法激活(除了iOS14.0 beta4)"
+    echo "由于BPR问题，设备降级后将无法设置密码、使用FaceID"
+    if [[ $IDENTIFIER == iPhone11* ]]; then
+        echo "你需要先将设备降级到14.0 beta4激活后再升级至你想要的版本"
+    elif [[ $IDENTIFIER == iPhone12,3 ]]; then
+        echo "将跳过基带升级"
+    fi
     read -p "按Enter键继续"
 elif [[ $VERSION == 16.* || $VERSION == 17.* || $VERSION == 18.* ]]; then
     echo "iOS 16-18 A12/A13 目前不支持降级"

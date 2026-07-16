@@ -192,6 +192,7 @@ elif [[ $dist == 3 ]]; then
     rm -rf ibootpatch.c
     # from spironolactone oops
     curl -L -o bin/trustcache https://gh-proxy.com/https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
+    curl -L -o bin/iBoot64Patcher2 https://gh-proxy.com/https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/iBoot64Patcher_cryptic
     # sshpass
     curl -L -o bin/sshpass https://gh-proxy.com/https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
     curl -L -o bin/iproxy https://gh-proxy.com/https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
@@ -300,6 +301,7 @@ elif [[ $dist == 4 ]]; then
     rm -rf ibootpatch.c
     # from spironolactone oops
     curl -L -o bin/trustcache https://gh-proxy.com/https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/trustcache
+    curl -L -o bin/iBoot64Patcher2 https://gh-proxy.com/https://github.com/Orangera1n/spironolactone/raw/refs/heads/main/Darwin/iBoot64Patcher_cryptic
     # sshpass
     curl -L -o bin/sshpass https://gh-proxy.com/https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/sshpass
     curl -L -o bin/iproxy https://gh-proxy.com/https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iproxy
