@@ -428,17 +428,7 @@ elif [[ $dist == 3 ]]; then
     mv libimg4_patcher ../bin/libimg4_patcher
     cd ..
     rm -rf "libimg4_patcher"
-    # the favor goes to openra1n by Mineek (pongoOS on unsigned bootchains), uses Nick Chan fork of openra1n
-    git clone https://github.com/asdfugil/openra1n -b ipad6
-    cd openra1n
-    curl -L -o Makefile https://github.com/mineek/openra1n/raw/refs/heads/sigcheck/Makefile
-    make || true
-    mv openra1n ../bin/openra1n || true
-    cd ..
-    rm -rf "openra1n"
-    # palera1n macOS bin
-    curl -L -o bin/palera1n https://github.com/palera1n/palera1n/releases/download/v2.2.1/palera1n-macos-universal
-    # install Kernel64Patcher for tether booting iOS 13+
+   # install Kernel64Patcher for tether booting iOS 13+
     curl -L -o bin/Kernel64Patcher https://github.com/edwin170/downr1n/raw/refs/heads/main/binaries/Darwin/Kernel64Patcher
     # fetch pwnerblu fork of Kernel64Patcher and iBootpatch2 for tether booting iOS 14.x on A12 device.
     git clone https://github.com/pwnerblu/Kernel64Patcher --recursive
@@ -512,16 +502,6 @@ elif [[ $dist == 4 ]]; then
     curl -L -o bin/ipatcher https://github.com/LukeZGD/Semaphorin/raw/refs/heads/main/Darwin/iPatcher
     # install additional restored_external patcher (iPhone X only)
     curl -L -o bin/ipx_restored_patcher https://github.com/LukeZGD/Legacy-iOS-Kit/raw/refs/heads/main/bin/macos/ipx_restored_patcher
-    # palera1n macOS bin
-    curl -L -o bin/palera1n https://github.com/palera1n/palera1n/releases/download/v2.2.1/palera1n-macos-universal
-    # the favor goes to openra1n by Mineek (pongoOS on unsigned bootchains), uses Nick Chan fork of openra1n
-    git clone https://github.com/asdfugil/openra1n -b ipad6
-    cd openra1n
-    curl -L -o Makefile https://github.com/mineek/openra1n/raw/refs/heads/sigcheck/Makefile
-    make OBJCOPY=$(brew --prefix)/opt/binutils/bin/gobjcopy || true
-    mv openra1n ../bin/openra1n || true
-    cd ..
-    rm -rf "openra1n" 
     # restored patcher for seprmvr64 A8+ restores, my fork of mineek's restored patcher but repurposed
     curl -L -o main.c https://gist.githubusercontent.com/pwnerblu/d2adc5adee74a679704577ddd64508bf/raw/991a74e2bbbdebdb1dd2d49d82f0829e7553f02f/main.c
     gcc main.c -o bin/restoredpatcher
@@ -789,6 +769,79 @@ elif [[ $IDENTIFIER == iPhone11,8 ]]; then
     MTFW="N841_Multitouch.im4p"
     WIRELESS="WirelessPower.iphone11b.im4p"
     KERNEL2="kernelcache.release.iphone11x"
+elif [[ $IDENTIFIER == iPhone11,2 ]]; then
+    REFER="iphone11"
+    REFER2="d321"
+    BOARDID="d321ap"
+    BOARDID2="d321"
+    NAME="iPhone XS ($BOARDID)"
+    AOP14="aopfw-iphone11aop.im4p"
+    AOP="aopfw-iphone11aop.RELEASE.im4p"
+    IOFW="SmartIOFirmware_ASCv2.im4p"
+    GFX="armfw_g11p.im4p"
+    ISP="adc-petra-d3x.im4p"
+    ANE="h11_ane_fw_quin.im4p"
+    AVE="AppleAVE2FW_H11.im4p"
+    CALLAN="D321_CallanFirmware.im4p"
+    HAPTICASSET="D321_HapticAssets.im4p"
+    MTFW="D321_Multitouch.im4p"
+    WIRELESS="WirelessPower.iphone11.im4p"
+    KERNEL2="kernelcache.release.iphone11x"
+elif [[ $IDENTIFIER == iPhone11,4 ]]; then
+    REFER="iphone11"
+    REFER2="d331"
+    BOARDID="d331ap"
+    BOARDID2="d331"
+    NAME="iPhone XS Max ($BOARDID)"
+    AOP14="aopfw-iphone11aop.im4p"
+    AOP="aopfw-iphone11aop.RELEASE.im4p"
+    IOFW="SmartIOFirmware_ASCv2.im4p"
+    GFX="armfw_g11p.im4p"
+    ISP="adc-petra-d3x.im4p"
+    ANE="h11_ane_fw_quin.im4p"
+    AVE="AppleAVE2FW_H11.im4p"
+    CALLAN="D331_CallanFirmware.im4p"
+    HAPTICASSET="D331_HapticAssets.im4p"
+    MTFW="D331_Multitouch.im4p"
+    WIRELESS="WirelessPower.iphone11.im4p"
+    KERNEL2="kernelcache.release.iphone11x"
+elif [[ $IDENTIFIER == iPhone11,6 ]]; then
+    REFER="iphone11"
+    REFER2="d331p"
+    BOARDID="d331pap"
+    BOARDID2="d331p"
+    NAME="iPhone XS Max ($BOARDID)"
+    AOP14="aopfw-iphone11aop.im4p"
+    AOP="aopfw-iphone11aop.RELEASE.im4p"
+    IOFW="SmartIOFirmware_ASCv2.im4p"
+    GFX="armfw_g11p.im4p"
+    ISP="adc-petra-d3x.im4p"
+    ANE="h11_ane_fw_quin.im4p"
+    AVE="AppleAVE2FW_H11.im4p"
+    CALLAN="D331p_CallanFirmware.im4p"
+    HAPTICASSET="D331p_HapticAssets.im4p"
+    MTFW="D331p_Multitouch.im4p"
+    WIRELESS="WirelessPower.iphone11.im4p"
+    KERNEL2="kernelcache.release.iphone11x"
+elif [[ $IDENTIFIER == iPhone12,1 ]]; then
+    REFER="iphone12b"
+    REFER2="n104"
+    BOARDID="n104ap"
+    BOARDID2="n104"
+    NAME="iPhone 11 ($BOARDID)"
+    AOP14="aopfw-iphone12baop.im4p"
+    AOP="aopfw-iphone12baop.RELEASE.im4p"
+    IOFW="SmartIOFirmware_ASCv2.im4p"
+    GFX="armfw_g12p.im4p"
+    ISP="adc-zelus-n104.im4p"
+    ANE="h12_ane_fw_metis.im4p"
+    AVE="AppleAVE2FW_H12.im4p"
+    CALLAN="N104_AudioCodecFirmware.im4p"
+    HAPTICASSET="N104_HapticAssets.im4p"
+    MTFW="N104_Multitouch.im4p"
+    LEAPHAPTIC="N104_LeapHapticsFirmware.im4p"
+    WIRELESS="WirelessPower.iphone12b.im4p"
+    KERNEL2="kernelcache.release.iphone12x"
 elif [[ $IDENTIFIER == iPhone12,3 ]]; then
     REFER="iphone12"
     REFER2="d421"
@@ -808,7 +861,44 @@ elif [[ $IDENTIFIER == iPhone12,3 ]]; then
     LEAPHAPTIC="D421_LeapHapticsFirmware.im4p"
     WIRELESS="WirelessPower.iphone12.im4p"
     KERNEL2="kernelcache.release.iphone12x"
-    PMP="t8030pmp.im4p"
+elif [[ $IDENTIFIER == iPhone12,5 ]]; then
+    REFER="iphone12"
+    REFER2="d431"
+    BOARDID="d431ap"
+    BOARDID2="d431"
+    NAME="iPhone 11 Pro Max ($BOARDID)"
+    AOP14="aopfw-iphone12aop.im4p"
+    AOP="aopfw-iphone12aop.RELEASE.im4p"
+    IOFW="SmartIOFirmware_ASCv2.im4p"
+    GFX="armfw_g12p.im4p"
+    ISP="adc-zelus-d4x.im4p"
+    ANE="h12_ane_fw_metis.im4p"
+    AVE="AppleAVE2FW_H12.im4p"
+    CALLAN="D431_AudioCodecFirmware.im4p"
+    HAPTICASSET="D431_HapticAssets.im4p"
+    MTFW="D431_Multitouch.im4p"
+    LEAPHAPTIC="D431_LeapHapticsFirmware.im4p"
+    WIRELESS="WirelessPower.iphone12.im4p"
+    KERNEL2="kernelcache.release.iphone12x"
+elif [[ $IDENTIFIER == iPhone12,8 ]]; then
+    REFER="iphone12c"
+    REFER2="d79"
+    BOARDID="d79ap"
+    BOARDID2="d79"
+    NAME="iPhone SE 2nd generation ($BOARDID)"
+    AOP14="aopfw-iphone12caop.im4p"
+    AOP="aopfw-iphone12caop.RELEASE.im4p"
+    IOFW="SmartIOFirmware_ASCv2.im4p"
+    IOFW13="SmartIOFirmwareT8030.im4p"
+    GFX="armfw_g12p.im4p"
+    ISP="adc-zelus-d79.im4p"
+    ANE="h12_ane_fw_metis.im4p"
+    AVE="AppleAVE2FW_H12.im4p"
+    AVE13="AppleAVE2FW.im4p"
+    CALLAN="D79_AudioCodecFirmware.im4p"
+    MTFW="D79_Multitouch.im4p"
+    WIRELESS="WirelessPower.iphone12c.im4p"
+    KERNEL2="kernelcache.release.iphone12x"
 elif [[ $IDENTIFIER == iPhone10,1 || $IDENTIFIER == iPhone10,4 || $IDENTIFIER == iPhone10,2 || $IDENTIFIER == iPhone10,5 ]]; then
     REFER="iphone10"
 elif [[ $IDENTIFIER == iPhone10,3 || $IDENTIFIER == iPhone10,6 ]]; then
@@ -969,17 +1059,16 @@ checkm8 64位 设备不完美降级 iOS 7.0 - 15.8.5
 使用最新SHSH (不完美降级)
 iSuns9 制作的 asr64_patcher 用于修补 ASR
 感谢: bodyc1m for iPod touch 6 support, including the Arch Linux/Fedora port they did.
-感谢: Mineek for openra1n and seprmvr64.
+感谢: Mineek for seprmvr64.
 
 设备: $NAME
 ECID: $ECID
 
 设备处于 $MODE 模式."
 
-if [[ $IDENTIFIER == iPhone12* ]]; then
-    echo "A13设备的支持是实验性的"
-    echo "可能会出现问题"
-    read -p "按Enter键继续"
+if [[ $IDENTIFIER == iPhone12,3 ]]; then
+    echo "iPhone 11 Pro 目前存在问题，暂不支持"
+    exit 1
 fi
 
 misc_utils(){
@@ -1837,7 +1926,12 @@ unzip "$IPSW_PATH_LATEST" -d tmp2
 mkdir -p work
 # iBSS patching of course because yes
 if [[ $VERSION == 14.0 ]] && [[ $BUILD != 18A373 ]]; then
-    ipsw_url="https://updates.cdn-apple.com/2020SummerFCS/fullrestores/001-46828/6A00C15C-8AEB-490E-A468-04E28C68E7C9/iPhone11,8,iPhone12,1_14.0_18A373_Restore.ipsw"
+    if [[ $IDENTIFIER == iPhone11,8 ]]; then
+        ipsw_url="https://updates.cdn-apple.com/2020SummerFCS/fullrestores/001-46828/6A00C15C-8AEB-490E-A468-04E28C68E7C9/iPhone11,8,iPhone12,1_14.0_18A373_Restore.ipsw"
+    elif [[ $IDENTIFIER == iPhone11,2 || $IDENTIFIER == iPhone11,4 || $IDENTIFIER == iPhone11,6 ]]; then
+        ipsw_url="https://updates.cdn-apple.com/2020SummerFCS/fullrestores/001-46850/8A4DA7D0-40E1-4079-A159-5B0983102B66/iPhone11,2,iPhone11,4,iPhone11,6,iPhone12,3,iPhone12,5_14.0_18A373_Restore.ipsw"
+    # iPhoneXS Xsmax支持(未测试)
+    fi
     cd work 
     sudo ../bin/pzb -g Firmware/dfu/$IBSS $ipsw_url
     cd ..
@@ -1849,7 +1943,12 @@ if [[ $VERSION == 14.0 ]] && [[ $BUILD != 18A373 ]]; then
     ./bin/iBootpatch2 work/iBSS.patchboot boot/$IDENTIFIER/$VERSION/iBSS.boot
     ./bin/img4 -i boot/$IDENTIFIER/iBSS.patch -o tmp2/Firmware/dfu/$IBEC -A -T ibec
 elif [[ $VERSION == 14.5* || $VERSION == 14.6* || $VERSION == 14.7* || $VERSION == 14.8* ]]; then
-    ipsw_url="https://updates.cdn-apple.com/2021WinterFCS/fullrestores/071-22451/5C8BBEE0-8471-4801-8D85-54D33DEDA50D/iPhone11,8,iPhone12,1_14.4.2_18D70_Restore.ipsw"
+    if [[ $IDENTIFIER == iPhone11,8 ]]; then
+        ipsw_url="https://updates.cdn-apple.com/2021WinterFCS/fullrestores/071-22451/5C8BBEE0-8471-4801-8D85-54D33DEDA50D/iPhone11,8,iPhone12,1_14.4.2_18D70_Restore.ipsw"
+    elif [[ $IDENTIFIER == iPhone11,2 || $IDENTIFIER == iPhone11,4 || $IDENTIFIER == iPhone11,6 ]]; then
+        ipsw_url="https://updates.cdn-apple.com/2021WinterFCS/fullrestores/071-22729/77571761-8A7F-4F67-BB19-12D9BC82405B/iPhone11,2,iPhone11,4,iPhone11,6,iPhone12,3,iPhone12,5_14.4.2_18D70_Restore.ipsw"
+    # iPhoneXS Xsmax支持(未测试)
+    fi
     cd work 
     sudo ../bin/pzb -g Firmware/dfu/$IBSS $ipsw_url
     cd ..
@@ -1880,7 +1979,10 @@ restore_ramdisk_dmg=$(find_dmg tmp1 smallest)
 restore_ramdisk_dmg_18=$(find_dmg tmp2 largest 179000000)
 if [[ $IDENTIFIER == iPhone11* ]] && [[ $BUILD != 18A5342e ]]; then
     # update rd stuff
-    # merged
+    restore_ramdisk_dmg=$(find_dmg tmp1 largest 1073741824)
+    restored="restored_update"
+elif [[ $IDENTIFIER == iPhone12,8 ]] && [[ $VERSION == 15.* ]]; then
+    # update rd stuff
     restore_ramdisk_dmg=$(find_dmg tmp1 largest 1073741824)
     restored="restored_update"
 else
@@ -1902,26 +2004,44 @@ sudo plutil -replace BuildIdentities.0.Manifest.KernelCache.Info.Path -string "$
 cp -v tmp1/Firmware/AOP/$AOP14 tmp2/Firmware/AOP/$AOP
 cp -v tmp1/Firmware/agx/$GFX tmp2/Firmware/agx/$GFX
 cp -v tmp1/Firmware/ane/$ANE tmp2/Firmware/ane/$ANE
-cp -v tmp1/Firmware/ave/$AVE tmp2/Firmware/ave/$AVE
+#cp -v tmp1/Firmware/ave/$AVE tmp2/Firmware/ave/$AVE
 cp -v tmp1/Firmware/isp_bni/$ISP tmp2/Firmware/isp_bni/$ISP
 cp -v tmp1/Firmware/WirelessPower/$WIRELESS tmp2/Firmware/WirelessPower/$WIRELESS
-cp -v tmp1/Firmware/$MTFW tmp2/Firmware/$MTFW
+#cp -v tmp1/Firmware/$MTFW tmp2/Firmware/$MTFW
 cp -v tmp1/Firmware/$CALLAN tmp2/Firmware/$CALLAN
 cp -v tmp1/Firmware/$HAPTICASSET tmp2/Firmware/$HAPTICASSET
 cp -v tmp1/Firmware/all_flash/$DEVICETREE tmp2/Firmware/all_flash/$DEVICETREE
-cp -v tmp1/Firmware/$IOFW tmp2/Firmware/$IOFW
+#cp -v tmp1/Firmware/$IOFW tmp2/Firmware/$IOFW
+if [[ $VERSION == 13.* ]] && [[ $IDENTIFIER == iPhone12,8 ]]; then
+    cp -v tmp1/Firmware/$IOFW13 tmp2/Firmware/$IOFW
+    cp -v tmp1/Firmware/ave/$AVE13 tmp2/Firmware/ave/$AVE
+else
+    cp -v tmp1/Firmware/$IOFW tmp2/Firmware/$IOFW
+    cp -v tmp1/Firmware/ave/$AVE tmp2/Firmware/ave/$AVE
+    cp -v tmp1/Firmware/$fs_dmg_name.root_hash tmp2/Firmware/$fs_dmg_18_name.root_hash 
+    cp -v tmp1/Firmware/$fs_dmg_name.mtree tmp2/Firmware/$fs_dmg_18_name.mtree 
+fi
+if [[ $VERSION == 13.* ]] && [[ $IDENTIFIER == iPhone12,8 ]]; then
+    echo "使用最新的 MTFW"
+elif [[ $IDENTIFIER == iPhone11,2 || $IDENTIFIER == iPhone11,4 || $IDENTIFIER == iPhone11,6 ]]; then
+    echo "使用最新的 MTFW"
+else
+    cp -v tmp1/Firmware/$MTFW tmp2/Firmware/$MTFW # copy MTFW for target iOS
+fi
 if [[ $IDENTIFIER == iPhone12* ]]; then
     cp -v tmp1/Firmware/$LEAPHAPTIC tmp2/Firmware/$LEAPHAPTIC
     cp -v tmp1/Firmware/pmp/$PMP tmp2/Firmware/pmp/$PMP
 fi
 cp -v $fs_dmg $fs_dmg_18 # replace rootfs in the IPSW
 cp -v tmp1/Firmware/$fs_dmg_name.trustcache tmp2/Firmware/$fs_dmg_18_name.trustcache 
-cp -v tmp1/Firmware/$fs_dmg_name.root_hash tmp2/Firmware/$fs_dmg_18_name.root_hash 
-cp -v tmp1/Firmware/$fs_dmg_name.mtree tmp2/Firmware/$fs_dmg_18_name.mtree 
+#cp -v tmp1/Firmware/$fs_dmg_name.root_hash tmp2/Firmware/$fs_dmg_18_name.root_hash 
+#cp -v tmp1/Firmware/$fs_dmg_name.mtree tmp2/Firmware/$fs_dmg_18_name.mtree 
 cp -v tmp1/Firmware/$ramdisk_dmg_name.trustcache tmp2/Firmware/$ramdisk_dmg_name_18.trustcache
 ./bin/img4 -i tmp1/$KERNEL -o work/kernel.raw
 if [[ $VERSION == 14.* ]]; then
     ./bin/Kernel64Patcher3 work/kernel.raw work/kernelboot.patch -b # use kernel64patcher3, properly patch trust evaluation check on ios 14 arm64e
+elif [[ $VERSION == 13.* ]]; then
+    ./bin/Kernel64Patcher3 work/kernel.raw work/kernelboot.patch -n # make booting take less time
 else
     ./bin/Kernel64Patcher3 work/kernel.raw work/kernelboot.patch -e -o -r -b15
 fi
@@ -1939,12 +2059,14 @@ rm -rf tmp2/$KERNEL
 ./bin/hfsplus work/ramdisk.raw rm usr/sbin/asr 
 ./bin/hfsplus work/ramdisk.raw add work/asr_patched usr/sbin/asr
 ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/sbin/asr
-./bin/hfsplus work/ramdisk.raw extract usr/lib/libimg4.dylib work/libimg4.dylib
-./bin/libimg4_patcher work/libimg4.dylib work/libimg4.patch
-./bin/ldid -Swork/ents.plist work/libimg4.patch
-./bin/hfsplus work/ramdisk.raw rm usr/lib/libimg4.dylib 
-./bin/hfsplus work/ramdisk.raw add work/libimg4.patch usr/lib/libimg4.dylib
-./bin/hfsplus work/ramdisk.raw chmod 100755 usr/lib/libimg4.dylib
+if [[ $VERSION == 14.* || $VERSION == 15.* ]]; then
+    ./bin/hfsplus work/ramdisk.raw extract usr/lib/libimg4.dylib work/libimg4.dylib
+    ./bin/libimg4_patcher work/libimg4.dylib work/libimg4.patch
+    ./bin/ldid -Swork/ents.plist work/libimg4.patch
+    ./bin/hfsplus work/ramdisk.raw rm usr/lib/libimg4.dylib 
+    ./bin/hfsplus work/ramdisk.raw add work/libimg4.patch usr/lib/libimg4.dylib
+    ./bin/hfsplus work/ramdisk.raw chmod 100755 usr/lib/libimg4.dylib
+fi
 if [[ $VERSION == 15.* ]]; then
     # ramdisk_download_name="018-79907-001.dmg"
     if [[ $restored == "restored_update" ]]; then
@@ -1982,7 +2104,9 @@ if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPhone12* ]]; then
 fi
 if [[ $VERSION == 15.* ]]; then
     ./bin/img4 -i tmp1/Firmware/$ramdisk_dmg_name.trustcache -o work/trustcache.raw
-    ./bin/trustcache append work/trustcache.raw work/restored_patch
+    if [[ $IDENTIFIER != iPhone12,8 ]]; then
+        ./bin/trustcache append work/trustcache.raw work/restored_patch
+    fi
     ./bin/trustcache append work/trustcache.raw work/asr_patched
     ./bin/trustcache append work/trustcache.raw work/libimg4.patch
     ./bin/img4 -i work/trustcache.raw -o tmp2/Firmware/$ramdisk_dmg_name_18.trustcache -A -T rtsc
@@ -2389,32 +2513,43 @@ if [[ ! -f "$IPSW_PATH_LATEST" ]]; then
     exit 1
 fi
 
+if [[ $IDENTIFIER == iPhone11,4 ]] && [[ $VERSION == 14.1* ]]; then
+    echo "此设备不支持降级到iOS14.1"
+    exit 1
+fi
+
+
 if [[ $VERSION == 14.* || $VERSION == 15.* ]]; then
     echo "SEP 支持不完全"
     echo "设备降级后将无法激活(除了iOS14.0 beta4)"
     echo "由于BPR问题，设备降级后将无法设置密码、使用FaceID"
     if [[ $IDENTIFIER == iPhone11* ]]; then
-        echo "你需要先将设备降级到14.0 beta4激活后再升级至你想要的版本"
-    elif [[ $IDENTIFIER == iPhone12,3 ]]; then
-        echo "将跳过基带升级"
-    fi
+        echo "你需要先将设备降级到 14.0 beta4 激活后再升级至你想要的版本"
+    elif [[ $IDENTIFIER == iPhone12,8 ]]; then
+        echo "你需要先将设备降级到 13.4.1-13.7 激活(可能需要使用iTunes、爱思助手等工具)后再升级至你想要的版本"
+        echo "Home键将失效"
     read -p "按Enter键继续"
-elif [[ $VERSION == 16.* || $VERSION == 17.* || $VERSION == 18.* ]]; then
-    echo "iOS 16-18 A12/A13 目前不支持降级"
+elif [[ $VERSION == 16.* || $VERSION == 17.* || $VERSION == 18.* || $VERSION == 26.* ]]; then
+    echo "iOS 16-26 A12/A13 目前不支持降级"
     exit 1
-elif [[ $VERSION == 13.* ]]; then
+elif [[ $VERSION == 13.* || $VERSION == 12.* ]] && [[ $IDENTIFIER == iPhone11* ]]; then
     echo "SEP 不兼容此版本"
     exit 1
+elif [[ $VERSION == 13.* ]] && [[ $IDENTIFIER == iPhone12* ]]; then
+    echo "SEP 支持不完全"
+    echo "由于BPR问题，设备降级后将无法设置密码、使用FaceID(或TouchID)"
+    echo "Home键将会失效，并且辅助触控也不可用"
+    read -p "按Enter键继续"
 fi
 
-if [[ $VERSION == 14.* || $VERSION == 15.0* || $VERSION == 15.1* || $VERSION == 15.2* || $VERSION == 15.3* ]] && [[ $IDENTIFIER == iPhone12* ]]; then
+if [[ $VERSION == 13.* || $VERSION == 14.* || $VERSION == 15.0* || $VERSION == 15.1* || $VERSION == 15.2* || $VERSION == 15.3* ]] && [[ $IDENTIFIER == iPhone12* ]] && [[ $IDENTIFIER != iPhone12,8 ]]; then
     echo "Rose 似乎不兼容"
     echo "iPhone11目前只支持降级到15.4至15.6.1"
     exit 1
 elif [[ $VERSION == 15.4* || $VERSION == 15.5* || $VERSION == 15.6* ]] && [[ $IDENTIFIER == iPhone12* ]]; then
     echo "iOS $LATEST_VERSION Rose 也许兼容，请自行测试"
     echo "是否继续"
-    read -p "按 enter 继续"
+    read -p "按Enter键继续"
 fi
 
 dfu_helper_a11
