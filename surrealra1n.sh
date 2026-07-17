@@ -739,6 +739,9 @@ elif [[ $IDENTIFIER == iPod* || $IDENTIFIER == iPad4,1 || $IDENTIFIER == iPad4,4
 fi
 
 # changes to device detection stuff
+if [[ $IDENTIFIER == iPhone12* ]]; then
+    PMP="t8030pmp.im4p"
+fi
 
 if [[ $IDENTIFIER == iPhone6* ]]; then
     REFER="iphone6"
@@ -2028,8 +2031,12 @@ elif [[ $IDENTIFIER == iPhone11,2 || $IDENTIFIER == iPhone11,4 || $IDENTIFIER ==
 else
     cp -v tmp1/Firmware/$MTFW tmp2/Firmware/$MTFW # copy MTFW for target iOS
 fi
-if [[ $IDENTIFIER == iPhone12* ]]; then
+if [[ ($IDENTIFIER == iPhone12*) &&
+      $IDENTIFIER != iPhone12,8 ]]; then
     cp -v tmp1/Firmware/$LEAPHAPTIC tmp2/Firmware/$LEAPHAPTIC
+    cp -v tmp1/Firmware/pmp/$PMP tmp2/Firmware/pmp/$PMP
+fi
+if [[ $IDENTIFIER == iPhone12* ]]; then
     cp -v tmp1/Firmware/pmp/$PMP tmp2/Firmware/pmp/$PMP
 fi
 cp -v $fs_dmg $fs_dmg_18 # replace rootfs in the IPSW
