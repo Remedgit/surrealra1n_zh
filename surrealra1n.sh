@@ -2535,7 +2535,8 @@ if [[ $VERSION == 14.* || $VERSION == 15.* ]]; then
     elif [[ $IDENTIFIER == iPhone12,8 ]]; then
         echo "你需要先将设备降级到 13.4.1-13.7 激活(可能需要使用iTunes、爱思助手等工具)后再升级至你想要的版本"
         echo "Home键将失效"
-    read -p "按Enter键继续"
+    	read -p "按Enter键继续"
+    fi
 elif [[ $VERSION == 16.* || $VERSION == 17.* || $VERSION == 18.* || $VERSION == 26.* ]]; then
     echo "iOS 16-26 A12/A13 目前不支持降级"
     exit 1
@@ -3152,3 +3153,4 @@ fi
 }
 
 main_menu
+
