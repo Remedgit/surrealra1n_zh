@@ -734,7 +734,7 @@ KEY_FILE="keys/$IDENTIFIER.txt"
 
 if [[ $IDENTIFIER == iPhone* || $IDENTIFIER == iPad4,2 || $IDENTIFIER == iPad4,3 || $IDENTIFIER == iPad4,5 || $IDENTIFIER == iPad4,6 || $IDENTIFIER == iPad4,8 || $IDENTIFIER == iPad4,9 || $IDENTIFIER == iPad5,2 || $IDENTIFIER == iPad5,4 ]]; then
     updatebb_flag="--latest-baseband"
-elif [[ $IDENTIFIER == iPod* || $IDENTIFIER == iPad4,1 || $IDENTIFIER == iPad4,4 || $IDENTIFIER == iPad4,7 || $IDENTIFIER == iPad5,1 || $IDENTIFIER == iPad5,3 ]]; then
+elif [[ $IDENTIFIER == iPod* || $IDENTIFIER == iPad4,1 || $IDENTIFIER == iPad4,4 || $IDENTIFIER == iPad4,7 || $IDENTIFIER == iPad5,1 || $IDENTIFIER == iPad5,3 || $IDENTIFIER == iPad11,1 ]]; then
     updatebb_flag="--no-baseband"
 fi
 
@@ -772,6 +772,24 @@ elif [[ $IDENTIFIER == iPhone11,8 ]]; then
     MTFW="N841_Multitouch.im4p"
     WIRELESS="WirelessPower.iphone11b.im4p"
     KERNEL2="kernelcache.release.iphone11x"
+elif [[ $IDENTIFIER == iPad11,1 ]]; then
+    REFER="ipad11"
+    REFER2="j210"
+    BOARDID="j210ap"
+    BOARDID2="j210"
+    NAME="iPad mini (5th generation) Wifi ($BOARDID)"
+    AOP14="aopfw-ipad11aop.im4p"
+    AOP="aopfw-ipad11aop.RELEASE.im4p"
+    IOFW="SmartIOFirmware_ASCv2.im4p"
+    GFX="armfw_g11p.im4p"
+    ISP="adc-petra-j2x.im4p"
+    ANE="h11_ane_fw_quin.im4p"
+    AVE="AppleAVE2FW_H11.im4p"
+    MTFW="J210_Multitouch.im4p"
+    # ipad wifi version doesn't have callan firmware
+    # ipad doesn't hav haptic firmware
+    # ipad wifi version doesn't have wirelesspower firmware
+    KERNEL2="kernelcache.release.ipad11"
 elif [[ $IDENTIFIER == iPhone11,2 ]]; then
     REFER="iphone11"
     REFER2="d321"
@@ -1036,6 +1054,8 @@ elif [[ $IDENTIFIER == iPhone11* ]]; then
     LATEST_VERSION="18.7.9"
 elif [[ $IDENTIFIER == iPhone12* ]]; then
     LATEST_VERSION="26.5.2"
+elif [[ $IDENTIFIER == iPad11* ]]; then
+    LATEST_VERSION="26.5.2"
 else
     LATEST_VERSION="12.5.8"
 fi
@@ -1171,12 +1191,12 @@ if [[ $IDENTIFIER == iPhone6* || $IDENTIFIER == iPad4* ]] && [[ $dist == 1 || $d
     read -p "Press enter to continue"
 fi
 
-echo "Checking if this device is in pwned DFU already"
+echo "检查设备是否已经处于dfu模式"
 irecovery_output=$(./bin/irecovery -q)
 if echo "$irecovery_output" | grep -q "PWND"; then
-    echo "Device is pwned!"
+    echo "设备已 pwned!"
     if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPhone12* || $IDENTIFIER == iPad11* ]]; then
-        echo "Skipping gaster reset"
+        echo "跳过 gaster reset"
     else
         ./bin/gaster reset
     fi
@@ -1933,7 +1953,9 @@ if [[ $VERSION == 14.0 ]] && [[ $BUILD != 18A373 ]]; then
         ipsw_url="https://updates.cdn-apple.com/2020SummerFCS/fullrestores/001-46828/6A00C15C-8AEB-490E-A468-04E28C68E7C9/iPhone11,8,iPhone12,1_14.0_18A373_Restore.ipsw"
     elif [[ $IDENTIFIER == iPhone11,2 || $IDENTIFIER == iPhone11,4 || $IDENTIFIER == iPhone11,6 ]]; then
         ipsw_url="https://updates.cdn-apple.com/2020SummerFCS/fullrestores/001-46850/8A4DA7D0-40E1-4079-A159-5B0983102B66/iPhone11,2,iPhone11,4,iPhone11,6,iPhone12,3,iPhone12,5_14.0_18A373_Restore.ipsw"
-    # iPhoneXS Xsmax支持(未测试)
+    elif [[ $IDENTIFIER == iPad11,1 ]]; then
+        ipsw_url="https://updates.cdn-apple.com/2020SummerFCS/fullrestores/001-46551/EFCA25AF-50BE-4712-A9C2-1E760AD99B82/iPad_Spring_2019_14.0_18A373_Restore.ipsw"
+        # iPad mini5 test
     fi
     cd work 
     sudo ../bin/pzb -g Firmware/dfu/$IBSS $ipsw_url
@@ -1950,14 +1972,13 @@ elif [[ $VERSION == 14.5* || $VERSION == 14.6* || $VERSION == 14.7* || $VERSION 
         ipsw_url="https://updates.cdn-apple.com/2021WinterFCS/fullrestores/071-22451/5C8BBEE0-8471-4801-8D85-54D33DEDA50D/iPhone11,8,iPhone12,1_14.4.2_18D70_Restore.ipsw"
     elif [[ $IDENTIFIER == iPhone11,2 || $IDENTIFIER == iPhone11,4 || $IDENTIFIER == iPhone11,6 ]]; then
         ipsw_url="https://updates.cdn-apple.com/2021WinterFCS/fullrestores/071-22729/77571761-8A7F-4F67-BB19-12D9BC82405B/iPhone11,2,iPhone11,4,iPhone11,6,iPhone12,3,iPhone12,5_14.4.2_18D70_Restore.ipsw"
-    # iPhoneXS Xsmax支持(未测试)
+    elif [[ $IDENTIFIER == iPad11,1 ]]; then
+        ipsw_url="https://updates.cdn-apple.com/2021WinterFCS/fullrestores/071-22329/CF450435-1EDC-4212-A768-D666A1677EC5/iPad_Spring_2019_14.4.2_18D70_Restore.ipsw"
     fi
     cd work 
     sudo ../bin/pzb -g Firmware/dfu/$IBSS $ipsw_url
     cd ..
     ./bin/img4 -i work/$IBSS -o work/iBSS.raw -k $IBSS_KEY
-#    ./bin/kairos work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
-#    ./bin/kairos work/iBSS.raw work/iBSS.patchboot -b "-v"
     ./bin/iBoot64Patcher2 work/iBSS.raw boot/$IDENTIFIER/iBSS.patch 
     ./bin/iBoot64Patcher2 work/iBSS.raw work/iBSS.patchboot -b "-v"
     ./bin/iBootpatch2 work/iBSS.patchboot boot/$IDENTIFIER/$VERSION/iBSS.boot
@@ -1980,7 +2001,7 @@ fi
 #
 restore_ramdisk_dmg=$(find_dmg tmp1 smallest)
 restore_ramdisk_dmg_18=$(find_dmg tmp2 largest 179000000)
-if [[ $IDENTIFIER == iPhone11* ]] && [[ $BUILD != 18A5342e ]]; then
+if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPad11* ]] && [[ $BUILD != 18A5342e ]]; then
     # update rd stuff
     restore_ramdisk_dmg=$(find_dmg tmp1 largest 1073741824)
     restored="restored_update"
@@ -2007,14 +2028,13 @@ sudo plutil -replace BuildIdentities.0.Manifest.KernelCache.Info.Path -string "$
 cp -v tmp1/Firmware/AOP/$AOP14 tmp2/Firmware/AOP/$AOP
 cp -v tmp1/Firmware/agx/$GFX tmp2/Firmware/agx/$GFX
 cp -v tmp1/Firmware/ane/$ANE tmp2/Firmware/ane/$ANE
-#cp -v tmp1/Firmware/ave/$AVE tmp2/Firmware/ave/$AVE
 cp -v tmp1/Firmware/isp_bni/$ISP tmp2/Firmware/isp_bni/$ISP
-cp -v tmp1/Firmware/WirelessPower/$WIRELESS tmp2/Firmware/WirelessPower/$WIRELESS
-#cp -v tmp1/Firmware/$MTFW tmp2/Firmware/$MTFW
-cp -v tmp1/Firmware/$CALLAN tmp2/Firmware/$CALLAN
-cp -v tmp1/Firmware/$HAPTICASSET tmp2/Firmware/$HAPTICASSET
+if [[ $IDENTIFIER == iPhone* ]]; then
+    cp -v tmp1/Firmware/$CALLAN tmp2/Firmware/$CALLAN
+    cp -v tmp1/Firmware/$HAPTICASSET tmp2/Firmware/$HAPTICASSET
+    cp -v tmp1/Firmware/WirelessPower/$WIRELESS tmp2/Firmware/WirelessPower/$WIRELESS
+fi
 cp -v tmp1/Firmware/all_flash/$DEVICETREE tmp2/Firmware/all_flash/$DEVICETREE
-#cp -v tmp1/Firmware/$IOFW tmp2/Firmware/$IOFW
 if [[ $VERSION == 13.* ]] && [[ $IDENTIFIER == iPhone12,8 ]]; then
     cp -v tmp1/Firmware/$IOFW13 tmp2/Firmware/$IOFW
     cp -v tmp1/Firmware/ave/$AVE13 tmp2/Firmware/ave/$AVE
@@ -2048,7 +2068,7 @@ cp -v tmp1/Firmware/$ramdisk_dmg_name.trustcache tmp2/Firmware/$ramdisk_dmg_name
 if [[ $VERSION == 14.* ]]; then
     ./bin/Kernel64Patcher3 work/kernel.raw work/kernelboot.patch -b # use kernel64patcher3, properly patch trust evaluation check on ios 14 arm64e
 elif [[ $VERSION == 13.* ]]; then
-    ./bin/Kernel64Patcher3 work/kernel.raw work/kernelboot.patch -n # make booting take less time
+    ./bin/Kernel64Patcher3 work/kernel.raw work/kernelboot.patch -b13 -n # make booting take less time
 else
     ./bin/Kernel64Patcher3 work/kernel.raw work/kernelboot.patch -e -o -r -b15
 fi
@@ -2153,7 +2173,7 @@ pwn_device
 sleep 5
 
 echo "发送 iBSS"
-if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPad11* ]]; then
+if [[ $IDENTIFIER == iPhone11* || $IDENTIFIER == iPhone12* || $IDENTIFIER == iPad11* ]]; then
     #curl -L -o bin/liter8ctl https://github.com/prdgmshift/usbliter8/raw/refs/heads/main/usbliter8ctl
     python3 bin/liter8ctl boot $bootdir/iBSS.boot
     echo "已引导设备"
@@ -2608,9 +2628,6 @@ while true; do
 done
 if [[ $EXIT_CODE -eq 0 ]]; then
     echo "恢复完毕"
-    # if [[ $VERSION == 14.* ]]; then
-    #     echo "设备将处于假DFU"
-    # fi
     exit 0
 else
     echo "futurerestore 失败 exit code $EXIT_CODE"
