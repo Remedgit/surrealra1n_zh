@@ -1,3 +1,5 @@
+# 本仓库不再更新，请移步原项目
+https://github.com/pwnerblu/surrealra1n
 # surrealra1n 
 
 A12-A13 设备不完美降级工具 + A7-A11 设备降级工具 汉化
